@@ -10,5 +10,7 @@ Many will validate the parameters at the view component. For example, you have a
 The Secret component should do exactly what it’s supposed to, to render the secret message. What we will actually do is wrap that component, and check for validation before loading the Secret component itself.
 
 ## Notes
-The reason why we are wrapping the component is to break url validation dependency from the actual component itself. This is to make sure the component is reusable and does exactly what it’s suppose to
-For authentication, please use an API instead of an if/else. The coding approach will be slightly different but ultimately it's the same concept - to have a wrapper validating before loading the actual componen
+- The reason why we are wrapping the component is to break URL validation dependency from the actual component itself. This is to make sure the component is reusable and does exactly what it’s suppose to.
+- For authentication, use an API instead of frontend validation. The coding approach will be slightly different but ultimately it’s the same concept — to have a wrapper validating before loading the actual component.
+- I use the term wrapper, other developers use HOC (Higher Order Component).
+- Check out the Medium link [here](https://fauzankadri.medium.com/how-to-properly-validate-parameters-in-react-using-react-router-dom-6c678dce0810 "How To Properly Validate Parameters in React (Using React-Router-Dom)")
