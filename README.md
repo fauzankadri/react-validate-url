@@ -1,70 +1,14 @@
-# Getting Started with Create React App
+#How To Properly Validate Parameters in React (Using React-Router-Dom)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Purpose
+You want to validate parameters anytime a user visits a specific route on your application. Let’s say you have a route, with a few parameters, one of them being a secret key to grant them access. What is the best way to validate the parameters? I’m here to propose a React friendly AND a simple solution
 
-## Available Scripts
+##Problem
+Many will validate the parameters at the view component. For example, you have a component called Secret, which will display a secret message if the url parameters are valid. Most juniors will validate the url at the Secret component itself. This ultimately leads to a big mess because you are trying to mount the secret message, but the component is also doing extra bits, such as validating the url. If you were to reuse this component somewhere else, it would ultimately lead to a big mess and confusion and bunch of conflicts.
 
-In the project directory, you can run:
+##Solution
+The Secret component should do exactly what it’s supposed to, to render the secret message. What we will actually do is wrap that component, and check for validation before loading the Secret component itself.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##Notes
+The reason why we are wrapping the component is to break url validation dependency from the actual component itself. This is to make sure the component is reusable and does exactly what it’s suppose to
+For authentication, please use an API instead of an if/else. The coding approach will be slightly different but ultimately it's the same concept - to have a wrapper validating before loading the actual componen
